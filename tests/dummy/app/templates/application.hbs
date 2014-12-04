@@ -1,3 +1,40 @@
-<h2 id='title'>Welcome to Ember.js</h2>
+<div class="panel-overlay"></div>
+<div class="panel panel-left panel-reveal">
+  <div class="content-block">
+    <p>Left Panel content here</p>
+  </div>
+</div>
 
-{{outlet}}
+<div class="views">
+  <div class="pages">
+    <div class="page toolbar-fixed navbar-fixed">
+      {{#f7-navbar}}
+        <div class="left">
+          <a class="link icon-only" href="#" {{action 'panelLeft'}}>
+            <i class="icon icon-bars"></i>
+          </a>
+        </div>
+        <div class="center wool-logo">
+          Example
+        </div>
+        <div class="right"></div>
+      {{/f7-navbar}}
+      <div class="page-content">
+        <div class="list-block">
+          <ul>
+            {{#each}}
+              <li>
+                <a href="#" class="item-link item-content" {{action 'itemClicked' this}}>
+                  <div class="item-inner">
+                    <div class="item-title">{{this}}</div>
+                  </div>
+                </a>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

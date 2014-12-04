@@ -1,6 +1,6 @@
 # Ember-cli-framework7
 
-This README outlines the details of collaborating on this Ember addon.
+I will write the readme soon!
 
 ## Installation
 
@@ -10,13 +10,11 @@ This README outlines the details of collaborating on this Ember addon.
 
 ## Running
 
+I will write documentation soon, but until then, you can see an example
+by cloning this repo.
+
 * `ember server`
 * Visit your app at http://localhost:4200.
-
-## Running Tests
-
-* `ember test`
-* `ember test --server`
 
 ## Building
 

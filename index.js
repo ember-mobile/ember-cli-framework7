@@ -8,7 +8,9 @@ module.exports = {
     this.app = app;
     this._super.included(app);
 
-    bowerDirectory = app.bowerDirectory;
+    app.import('vendor/css/ember-cli-framework7.css');
+
+    var bowerDirectory = app.bowerDirectory;
     app.import(bowerDirectory + '/framework7/dist/css/framework7.css');
     app.import(bowerDirectory + '/framework7/dist/css/framework7.themes.css');
     app.import(bowerDirectory + '/framework7/dist/js/framework7.js');
