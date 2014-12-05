@@ -7,7 +7,10 @@ var f7 = new Framework7({
 var preloaderTimeout = null;
 
 export default Ember.Object.extend(f7, {
-  showPreloader: function(options = {}) {
+  showPreloader: function(options) {
+    if (options == null) {
+      options = {};
+    }
     if (options.delay) {
       preloaderTimeout = setTimeout(function() {
         preloaderTimeout = null;
