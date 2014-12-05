@@ -105,6 +105,35 @@ actions:
       @f7.alert 'error'
 ```
 
+### Pull-to-refresh
+
+Pull to refresh is supported by Framework7 but there is a bit work to do
+to make it run in Ember. In order to understand how pull-to-refresh
+works in Framework7, please refer to the [pull-to-refresh
+documentation](http://www.idangero.us/framework7/docs/pull-to-refresh.html). To make it as easy as possible to integrate pull-to-refresh into your Ember application, we wrapped all the magic into a component.
+
+```emblem
+.pages
+  .page.navbar-fixed
+    = f7-pull-to-refresh action="refresh"
+      .list-block
+        ul
+          /...
+```
+
+The refresh action gets a deferred promise passed as the first parameter
+which must either be resolved or rejected in order to close the
+pull-to-refresh indicator.
+
+```coffeescript
+# ...
+actions:
+  refresh: (deferred) ->
+    Ember.run.later this, (->
+      deferred.resolve()
+    ), 1000
+```
+
 ## Running the dummy app
 
 The dummy app is a small example of Framework7 within an Ember CLI
