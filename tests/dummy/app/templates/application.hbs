@@ -19,7 +19,7 @@
         </div>
         <div class="right"></div>
       {{/f7-navbar}}
-      <div class="page-content">
+      {{#f7-pull-to-refresh action="refresh"}}
         <div class="list-block">
           <ul>
             {{#each}}
@@ -33,7 +33,7 @@
             {{/each}}
           </ul>
         </div>
-      </div>
+      {{/f7-pull-to-refresh}}
     </div>
   </div>
 </div>

@@ -8,6 +8,12 @@ export default Ember.ArrayController.extend({
 
     panelLeft: function() {
       this.get('f7').openPanel('left');
+    },
+
+    refresh: function(deferred) {
+      Ember.run.later(this, function() {
+        deferred.resolve();
+      }, 1000);
     }
   }
 });
