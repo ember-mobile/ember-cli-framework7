@@ -12,6 +12,7 @@ support us, we will be excited to receive your pull requests.
 ## Installation
 
     npm install --save-dev ember-cli-framework7
+    bower install --save-dev framework7
 
 ## Usage
 
