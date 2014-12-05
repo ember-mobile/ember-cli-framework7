@@ -78,7 +78,8 @@ Framework7Initializer =
   name: 'framework7'
   after: 'framework7-service'
   initialize: (container, application) ->
-    container.lookup('service:framework7').initSwipePanels 'left'
+    Ember.run.schedule 'afterRender', ->
+      container.lookup('service:framework7').initSwipePanels 'left'
 
 `export default Framework7Initializer`
 ```
