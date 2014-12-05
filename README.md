@@ -30,10 +30,12 @@ notation for explanations.
 ```
 
 ```coffeescript
+# CoffeeScript
 @get('f7').alert 'Some alert'
 ```
 
 ```javascript
+// JavaScript
 this.get('f7').alert('Some alert');
 ```
 
