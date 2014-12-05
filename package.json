@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-framework7",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -10,11 +10,11 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": "https://github.com/ember-mobile/ember-cli-framework7",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Paul Spieker",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^1.0.0",
@@ -31,9 +31,13 @@
     "express": "^4.8.5",
     "glob": "^4.0.5"
   },
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Ember CLI Framework7 breings the great mobile development framework to Ember CLI.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "framework7",
+    "ember-cli",
+    "ember-mobile",
+    "mber-cli-mobile"
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
