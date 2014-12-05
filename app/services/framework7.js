@@ -8,11 +8,11 @@ var preloaderTimeout = null;
 
 export default Ember.Object.extend(f7, {
   showPreloader: function(options = {}) {
-    if (options.wait) {
+    if (options.delay) {
       preloaderTimeout = setTimeout(function() {
         preloaderTimeout = null;
         f7.showPreloader();
-      }, options.wait);
+      }, options.delay);
     } else {
       f7.showPreloader();
     }
