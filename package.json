@@ -37,7 +37,8 @@
     "framework7",
     "ember-cli",
     "ember-mobile",
-    "mber-cli-mobile"
+    "mobile",
+    "touch"
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
