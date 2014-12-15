@@ -14,6 +14,10 @@ export default Ember.ArrayController.extend({
       Ember.run.later(this, function() {
         deferred.resolve();
       }, 1000);
+    },
+
+    delete: function(item) {
+      this.removeObject(item);
     }
   }
 });

@@ -23,13 +23,27 @@
         <div class="list-block">
           <ul>
             {{#each}}
-              <li>
-                <a href="#" class="item-link item-content" {{action 'itemClicked' this}}>
-                  <div class="item-inner">
-                    <div class="item-title">{{this}}</div>
-                  </div>
-                </a>
-              </li>
+              {{#f7-swipeout}}
+                <div class="swipeout-content">
+                  <a href="#" class="item-link item-content" {{action 'itemClicked' this}}>
+                    <div class="item-inner">
+                      <div class="item-title">{{this}}</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- Swipeout actions left -->
+                <div class="swipeout-actions-left">
+                  <!-- Swipeout actions links/buttons -->
+                  <a href="#">Action 1</a>
+                  <a href="#">Action 2</a>
+                </div>
+                <!-- Swipeout actions right -->
+                <div class="swipeout-actions-right">
+                  <!-- Swipeout actions links/buttons -->
+                  <a href="#">Action 1</a>
+                  <a href="#" class="swipeout-delete swipeout-overswipe" {{action 'delete' this on='click'}}>Delete</a>
+                </div>
+              {{/f7-swipeout}}
             {{/each}}
           </ul>
         </div>

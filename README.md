@@ -134,6 +134,32 @@ actions:
     ), 1000
 ```
 
+### Swipeout
+
+Swipeout markup needs to be initialized. This can be done by using the
+component `f7-swipeout`.
+
+```emblem
+.list-block
+  ul
+    = each
+      = f7-swipeout
+        .swipeout-content
+          a.item-link.item-content href="#" click="'itemClicked' this"
+            .item-inner
+              .item-title = this
+        .swipeout-actions-left
+          a href="#"
+            | Action 1
+          a href="#"
+            | Action 2
+        .swipeout-actions-right
+          a href="#"
+            | Action 1
+          a.swipeout-delete.swipeout-overswipe" href="#" click="delete this"
+            | Delete
+```
+
 ## Running the dummy app
 
 The dummy app is a small example of Framework7 within an Ember CLI
