@@ -1,6 +1,6 @@
 # Ember CLI Framework7
 
-Ember CLI [Framework7](http://www.idangero.us/framework7/) breings the great
+Ember CLI [Framework7](http://www.idangero.us/framework7/) brings the great
 mobile development framework to Ember CLI. We try to integrate it as good as
 possible, since the framework itself is developed for use with
 [Angular JS](https://angularjs.org/).
