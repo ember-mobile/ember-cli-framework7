@@ -7,5 +7,9 @@ export default Ember.Component.extend({
   didInsertElement: function() {
     var _this = this;
     this.get('f7').initSwipeout(this.$());
+  },
+  
+  willDestroyElement: function() {
+    // TODO: Trigger animation
   }
 });
