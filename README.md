@@ -51,6 +51,18 @@ All this methods can be found in the Framework7 documentation.
 In order to simplify the work with Framework7 within Ember, we added
 some component and additional methods on the `f7` service.
 
+### Page container
+
+The page container component is used to initialize included Framework7
+features. Currently single components are used to initialize them but I
+will re-work it.
+
+= f7-page-content
+  .navbar
+    / ...
+  .page-content
+    / ...
+
 ### Navbar
 
 Framework7 requires to call `sizeNavbars` after rendering a navbar in
@@ -59,7 +71,7 @@ creating the required markup for navbars and ensuring the title to be
 centered.
 
 ```emblem
-= navbar
+= f7-navbar
   .left
     a.link.icon-only href="#" click="toggleSidePanel"
       i.icon.icon-bars
