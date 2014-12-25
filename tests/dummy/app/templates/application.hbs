@@ -7,7 +7,7 @@
 
 <div class="views">
   <div class="pages">
-    <div class="page toolbar-fixed navbar-fixed">
+    {{#f7-page-container}}
       {{#f7-navbar}}
         <div class="left">
           <a class="link icon-only" href="#" {{action 'panelLeft'}}>
@@ -19,8 +19,16 @@
         </div>
         <div class="right"></div>
       {{/f7-navbar}}
+      <!-- Search bar -->
+      <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar">
+        <div class="searchbar-input">
+          <input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>
+        </div><a href="#" class="searchbar-cancel">Cancel</a>
+      </form>
+      <!-- Search bar overlay -->
+      <div class="searchbar-overlay"></div>
       {{#f7-pull-to-refresh action="refresh"}}
-        <div class="list-block">
+        <div class="list-block list-block-search searchbar-found">
           <ul>
             {{#each}}
               {{#f7-swipeout}}
@@ -48,7 +56,7 @@
           </ul>
         </div>
       {{/f7-pull-to-refresh}}
-    </div>
+    {{/f7-page-container}}
   </div>
 </div>
 
