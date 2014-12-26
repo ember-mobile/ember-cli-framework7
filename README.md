@@ -57,11 +57,13 @@ The page container component is used to initialize included Framework7
 features. Currently single components are used to initialize them but I
 will re-work it.
 
+```emblem
 = f7-page-content
   .navbar
     / ...
   .page-content
     / ...
+```
 
 ### Navbar
 
