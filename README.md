@@ -58,7 +58,7 @@ features. Currently single components are used to initialize them but I
 will re-work it.
 
 ```emblem
-= f7-page-content
+= f7-page-container
   .navbar
     / ...
   .page-content
