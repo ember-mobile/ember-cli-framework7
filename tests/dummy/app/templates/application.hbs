@@ -19,43 +19,37 @@
         </div>
         <div class="right"></div>
       {{/f7-navbar}}
-      <!-- Search bar -->
-      <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar">
-        <div class="searchbar-input">
-          <input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>
-        </div><a href="#" class="searchbar-cancel">Cancel</a>
-      </form>
-      <!-- Search bar overlay -->
-      <div class="searchbar-overlay"></div>
-      {{#f7-pull-to-refresh action="refresh"}}
-        <div class="list-block list-block-search searchbar-found">
-          <ul>
-            {{#each}}
-              {{#f7-swipeout}}
-                <div class="swipeout-content">
-                  <a href="#" class="item-link item-content" {{action 'itemClicked' this}}>
-                    <div class="item-inner">
-                      <div class="item-title">{{this}}</div>
-                    </div>
-                  </a>
-                </div>
-                <!-- Swipeout actions left -->
-                <div class="swipeout-actions-left">
-                  <!-- Swipeout actions links/buttons -->
-                  <a href="#">Action 1</a>
-                  <a href="#">Action 2</a>
-                </div>
-                <!-- Swipeout actions right -->
-                <div class="swipeout-actions-right">
-                  <!-- Swipeout actions links/buttons -->
-                  <a href="#">Action 1</a>
-                  <a href="#" class="swipeout-delete swipeout-overswipe" {{action 'delete' this on='click'}}>Delete</a>
-                </div>
-              {{/f7-swipeout}}
-            {{/each}}
-          </ul>
-        </div>
-      {{/f7-pull-to-refresh}}
+      {{#f7-search-bar searchIn=".item-title"}}
+        {{#f7-pull-to-refresh action="refresh"}}
+          <div class="list-block list-block-search searchbar-found">
+            <ul>
+              {{#each}}
+                {{#f7-swipeout}}
+                  <div class="swipeout-content">
+                    <a href="#" class="item-link item-content" {{action 'itemClicked' this}}>
+                      <div class="item-inner">
+                        <div class="item-title">{{this}}</div>
+                      </div>
+                    </a>
+                  </div>
+                  <!-- Swipeout actions left -->
+                  <div class="swipeout-actions-left">
+                    <!-- Swipeout actions links/buttons -->
+                    <a href="#">Action 1</a>
+                    <a href="#">Action 2</a>
+                  </div>
+                  <!-- Swipeout actions right -->
+                  <div class="swipeout-actions-right">
+                    <!-- Swipeout actions links/buttons -->
+                    <a href="#">Action 1</a>
+                    <a href="#" class="swipeout-delete swipeout-overswipe" {{action 'delete' this on='click'}}>Delete</a>
+                  </div>
+                {{/f7-swipeout}}
+              {{/each}}
+            </ul>
+          </div>
+        {{/f7-pull-to-refresh}}
+      {{/f7-search-bar}}
     {{/f7-page-container}}
   </div>
 </div>

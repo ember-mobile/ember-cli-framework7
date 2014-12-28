@@ -174,6 +174,34 @@ component `f7-swipeout`.
             | Delete
 ```
 
+### Search bar
+
+You could just add the markup of the [Framework7 documentation](http://www.idangero.us/framework7/docs/searchbar.html) or use
+this component.
+
+#### Options
+
+* **searchList** Selector of the search list (default: .list-block-search)
+* **searchIn** Selector of the list item element to search in. If this is
+  set, Framework7 is filtering the data, if set to `undefined`,
+Framework7 will do nothing and you have to take care of filtering the
+data. (default: undefined)
+
+#### Actions
+
+* **action** is called when the search term is changed and receives the
+  new search term as a parameter.
+
+```emblem
+= f7-search-bar action="filter"
+  = f7-pull-to-refresh action="refresh"
+    .list-block.list-block-search.searchbar-found
+      ul
+        = each
+          .item-inner
+            .item-title = this
+```
+
 ## Running the dummy app
 
 The dummy app is a small example of Framework7 within an Ember CLI

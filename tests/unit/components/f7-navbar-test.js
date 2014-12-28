@@ -4,18 +4,25 @@ import {
 } from 'ember-qunit';
 
 moduleForComponent('f7-navbar', 'F7NavbarComponent', {
-  // specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar']
 });
 
-test('it renders', function() {
-  expect(2);
+test('navbar text is centered', function() {
+  //expect(2);
+
+  //var windowCenter = Math.round($(window).width() / 2);
+
+  //visit('/').then(function () {
+  //  debugger;
+  //});
 
   // creates the component instance
-  var component = this.subject();
-  equal(component._state, 'preRender');
+  //var component = this.subject();
+  //equal(component._state, 'preRender');
 
   // appends the component to the page
-  this.append();
-  equal(component._state, 'inDOM');
+  //this.append();
+  //equal(component._state, 'inDOM');
+  //
+  var component = this.subject();
+  this.render();
 });
