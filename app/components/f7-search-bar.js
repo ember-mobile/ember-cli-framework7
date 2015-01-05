@@ -16,6 +16,11 @@ export default Ember.Component.extend({
     if (searchList.length > 1) {
       throw new Error('There is more then one search list available within the search component.');
     }
+    this.get('f7').initSearchbar(this.$());
+  },
+
+  willDestroyElement: function() {
+    this.get('f7').destroySearchbar(this.$());
   },
 
   onQueryChanged: function() {

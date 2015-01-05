@@ -17,11 +17,19 @@
         <div class="center wool-logo">
           Example
         </div>
-        <div class="right"></div>
+        <div class="right">
+          <a class="link" href="#" {{action 'toggleSortable'}}>
+            {{#if sortable}}
+              Done
+            {{else}}
+              Sort
+            {{/if}}
+          </a>
+        </div>
       {{/f7-navbar}}
       {{#f7-search-bar searchIn=".item-title"}}
         {{#f7-pull-to-refresh action="refresh"}}
-          <div class="list-block list-block-search searchbar-found">
+          <div class="list-block list-block-search searchbar-found sortable">
             <ul>
               {{#each}}
                 {{#f7-swipeout}}
@@ -44,6 +52,8 @@
                     <a href="#">Action 1</a>
                     <a href="#" class="swipeout-delete swipeout-overswipe" {{action 'delete' this on='click'}}>Delete</a>
                   </div>
+                  <!-- Sortable handler element -->
+                  <div class="sortable-handler"></div>
                 {{/f7-swipeout}}
               {{/each}}
             </ul>

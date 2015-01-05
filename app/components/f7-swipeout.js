@@ -4,11 +4,6 @@ export default Ember.Component.extend({
   tagName: 'li',
   classNames: ['swipeout'],
 
-  didInsertElement: function() {
-    var _this = this;
-    this.get('f7').initSwipeout(this.$());
-  },
-
   willDestroyElement: function() {
     var _this = this;
     var parent = this.$().parent();

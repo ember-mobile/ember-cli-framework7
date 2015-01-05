@@ -53,10 +53,6 @@ some component and additional methods on the `f7` service.
 
 ### Page container
 
-The page container component is used to initialize included Framework7
-features. Currently single components are used to initialize them but I
-will re-work it.
-
 ```emblem
 = f7-page-container
   .navbar
@@ -150,8 +146,17 @@ actions:
 
 ### Swipeout
 
-Swipeout markup needs to be initialized. This can be done by using the
-component `f7-swipeout`.
+To use Swipeout, you need to include the `ApplicationViewMixin` into the
+application view. In order to animate removing the item use the `f7-swipeout`
+component.
+
+```javascript
+import Ember from 'ember';
+import ApplicationViewMixin from 'ember-cli-framework7/mixins/application-view';
+
+export default Ember.View.extend(ApplicationViewMixin, {
+});
+```
 
 ```emblem
 .list-block
@@ -176,8 +181,7 @@ component `f7-swipeout`.
 
 ### Search bar
 
-You could just add the markup of the [Framework7 documentation](http://www.idangero.us/framework7/docs/searchbar.html) or use
-this component.
+Use this component.
 
 #### Options
 
@@ -200,6 +204,21 @@ data. (default: undefined)
         = each
           .item-inner
             .item-title = this
+```
+
+### Sortable
+
+In order to use the sortable feature, add the required markup to the
+list item and add the `ApplicationViewMixin` to your application view.
+Then enable the sorting by using the `f7` service and the methods
+described in the [Framework7 documentation](http://www.idangero.us/framework7/docs/sortable-list.html).
+
+```javascript
+import Ember from 'ember';
+import ApplicationViewMixin from 'ember-cli-framework7/mixins/application-view';
+
+export default Ember.View.extend(ApplicationViewMixin, {
+});
 ```
 
 ## Running the dummy app
