@@ -120,12 +120,12 @@ actions:
 Pull to refresh is supported by Framework7 but there is a bit work to do
 to make it run in Ember. In order to understand how pull-to-refresh
 works in Framework7, please refer to the [pull-to-refresh
-documentation](http://www.idangero.us/framework7/docs/pull-to-refresh.html). To make it as easy as possible to integrate pull-to-refresh into your Ember application, we wrapped all the magic into a component.
+documentation](http://www.idangero.us/framework7/docs/pull-to-refresh.html). To make it as easy as possible to integrate pull-to-refresh into your Ember application, we wrapped all the magic into the f7-page-content component.
 
 ```emblem
 .pages
   .page.navbar-fixed
-    = f7-pull-to-refresh action="refresh"
+    = f7-page-content onPullToRefresh="refresh"
       .list-block
         ul
           /...
@@ -141,6 +141,35 @@ actions:
   refresh: (deferred) ->
     Ember.run.later this, (->
       deferred.resolve()
+    ), 1000
+```
+
+### Infinite Scroll
+
+Infinite scroll is also supported by [Framework7](http://www.idangero.us/framework7/docs/infinite-scroll.html) and available through the f7-page-content component.
+
+```emblem
+.pages
+  .page.navbar-fixed
+    = f7-page-content onInfiniteScroll="loadMore"
+      .list-block
+        ul
+          /...
+
+```
+
+The loadMore action gets a deferred promise as the first argument and the component as the second argument, so it's possible to detach the infinite scroll from the page if there is no more need for it.
+
+```coffeescript
+# ...
+hasMoreData: true
+actions:
+  loadMore: (deferred, component) ->
+    Ember.run.later this, (->
+      if @get('hasMoreData')
+        deferred.resolve()
+      else
+        component.detachInfiniteScroll()
     ), 1000
 ```
 
