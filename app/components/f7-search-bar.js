@@ -19,10 +19,6 @@ export default Ember.Component.extend({
     this.get('f7').initSearchbar(this.$());
   },
 
-  willDestroyElement: function() {
-    this.get('f7').destroySearchbar(this.$());
-  },
-
   onQueryChanged: function() {
     this.sendAction('action', this.get('query'));
   }.observes('query')
