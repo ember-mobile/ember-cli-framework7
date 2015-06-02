@@ -29,7 +29,7 @@
     "ember-data": "1.0.0-beta.12",
     "ember-export-application-global": "^1.0.0",
     "express": "^4.8.5",
-    "glob": "^4.0.5"
+    "glob": "4.4.0"
   },
   "description": "Ember CLI Framework7 breings the great mobile development framework to Ember CLI.",
   "keywords": [
