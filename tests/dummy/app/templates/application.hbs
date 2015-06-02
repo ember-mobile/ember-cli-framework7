@@ -28,7 +28,7 @@
         </div>
       {{/f7-navbar}}
       {{#f7-search-bar searchIn=".item-title"}}
-        {{#f7-pull-to-refresh action="refresh"}}
+        {{#f7-page-content onPullToRefresh="refresh"}}
           <div class="list-block list-block-search searchbar-found sortable">
             <ul>
               {{#each}}
@@ -58,7 +58,7 @@
               {{/each}}
             </ul>
           </div>
-        {{/f7-pull-to-refresh}}
+        {{/f7-page-content}}
       {{/f7-search-bar}}
     {{/f7-page-container}}
   </div>
