@@ -4,8 +4,14 @@ var f7 = new Framework7({
   init: false
 });
 
+//f7.params.material = false; //ENABLE MATERIAL DESIGN
+//f7.theme = null; //THEME NAME, FOR EXAMPLE: 'theme-red'
+
 f7.f7Init = f7.init;
 f7.init = function() {
+  if(f7.theme){//SET THEME IF SPECIFIED
+    Ember.$('body').addClass(f7.theme);
+  }
   return this._super();
 };
 
