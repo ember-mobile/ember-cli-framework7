@@ -1,5 +1,5 @@
 <!-- Search bar -->
-<form {{bind-attr data-search-list=searchList data-search-in=searchIn}} class="searchbar searchbar-init">
+<form data-search-list="{{data-search-list}}" data-search-in="{{searchIn}}" class="searchbar searchbar-init">
   <div class="searchbar-input">
     {{input type='search' value=query placeholder=placeholder}}<a href="#" class="searchbar-clear"></a>
   </div><a href="#" class="searchbar-cancel">{{cancelText}}</a>

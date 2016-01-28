@@ -14,6 +14,18 @@ support us, we will be excited to receive your pull requests.
     npm install --save-dev ember-cli-framework7
     ember g ember-cli-framework7
 
+## Import Framework7 css files
+
+For Material Design add to ember-cli-build.js
+
+    app.import('bower_components/framework7/dist/css/framework7.material.css');
+    app.import('bower_components/framework7/dist/css/framework7.material.colors.css');
+
+For iOS Design add to ember-cli-build.js
+
+    app.import('bower_components/framework7/dist/css/framework7.ios.css');
+    app.import('bower_components/framework7/dist/css/framework7.ios.colors.css');
+
 ## Usage
 
 After you installed Ember CLI Framework7, you can just start using it
