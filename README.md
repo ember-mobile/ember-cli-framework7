@@ -1,9 +1,7 @@
 # Ember CLI Framework7
 
 Ember CLI [Framework7](http://www.idangero.us/framework7/) brings the great
-mobile development framework to Ember CLI. We try to integrate it as good as
-possible, since the framework itself is developed for use with
-[Angular JS](https://angularjs.org/).
+mobile development framework to Ember CLI.
 
 Please note, that this version is kind of a [minimal viable product](https://en.wikipedia.org/wiki/Minimum_viable_product)
 at the moment but we will keep improving it. If you are interested to
@@ -11,20 +9,22 @@ support us, we will be excited to receive your pull requests.
 
 ## Installation
 
-    npm install --save-dev ember-cli-framework7
-    ember g ember-cli-framework7
+`ember install ember-cli-framework7`
 
-## Import Framework7 css files
+## Theme
 
-For Material Design add to ember-cli-build.js
+Framework7 currently comes bundled with both iOS and Material Design themes. To cut down on payload size, this addon allows you
+to specify which theme is imported. Simply add the following to your `ember-cli-build.js` file in your `app` options:
 
-    app.import('bower_components/framework7/dist/css/framework7.material.css');
-    app.import('bower_components/framework7/dist/css/framework7.material.colors.css');
+```js
+  var app = new EmberApp(defaults, {
+    'ember-cli-framework7': {
+      theme: 'material|ios'
+    }
+  });
+```
 
-For iOS Design add to ember-cli-build.js
-
-    app.import('bower_components/framework7/dist/css/framework7.ios.css');
-    app.import('bower_components/framework7/dist/css/framework7.ios.colors.css');
+Note: `theme` defaults to `ios` if nothing is specified.
 
 ## Usage
 
