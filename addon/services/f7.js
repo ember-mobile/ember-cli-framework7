@@ -1,21 +1,26 @@
 import Ember from 'ember';
 
-const { Service } = Ember;
+const { Service, computed } = Ember;
 
 export default Service.extend({
   f7: null,
+  options: computed(function() {
+    return {
+      init: this._f7Init,
+      cache: false,
+      pushState: false
+    };
+  }),
+
   preloaderTimeout: null,
 
   init() {
     this._super(...arguments);
-    this.set('f7', new Framework7({
-      init: this._f7Init
-    }));
+    this.set('f7', new Framework7(this.get('options')));
   },
 
   _f7Init() {
     const f7 = this.get('f7');
-
     if(f7.theme){
       Ember.$('body').addClass(f7.theme);
     }
@@ -55,6 +60,6 @@ export default Service.extend({
     const f7 = this.get('f7');
 
     f7.params.swipePanel = panels;
-    f7.initSwipePanels()
+    f7.initSwipePanels();
   }
 });
