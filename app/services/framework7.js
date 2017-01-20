@@ -1,27 +1,34 @@
 import Ember from 'ember';
 
-var f7 = new Framework7({
-  init: false
-});
+const { Service } = Ember;
 
-//f7.params.material = false; //ENABLE MATERIAL DESIGN
-//f7.theme = null; //THEME NAME, FOR EXAMPLE: 'theme-red'
+export default Service.extend({
+  f7: null,
+  preloaderTimeout: null,
 
-f7.f7Init = f7.init;
-f7.init = function() {
-  if(f7.theme){//SET THEME IF SPECIFIED
-    Ember.$('body').addClass(f7.theme);
-  }
-  return this._super();
-};
+  init() {
+    this._super(...arguments);
+    this.set('f7', new Framework7({
+      init: this._f7Init
+    }));
+  },
 
-var preloaderTimeout = null;
+  _f7Init() {
+    const f7 = this.get('f7');
 
-export default Ember.Object.extend(f7, {
-  showPreloader: function(options) {
+    if(f7.theme){
+      Ember.$('body').addClass(f7.theme);
+    }
+  },
+
+  showPreloader(options) {
+    const f7 = this.get('f7');
+    let preloaderTimeout = this.get('preloaderTimeout');
+
     if (options == null) {
       options = {};
     }
+
     if (options.delay) {
       preloaderTimeout = setTimeout(function() {
         preloaderTimeout = null;
@@ -32,7 +39,10 @@ export default Ember.Object.extend(f7, {
     }
   },
 
-  hidePreloader: function() {
+  hidePreloader() {
+    const f7 = this.get('f7');
+    let preloaderTimeout = this.get('preloaderTimeout');
+
     if (preloaderTimeout) {
       clearTimeout(preloaderTimeout);
       preloaderTimeout = null;
@@ -41,7 +51,9 @@ export default Ember.Object.extend(f7, {
     }
   },
 
-  initSwipePanels: function(panels) {
+  initSwipePanels(panels) {
+    const f7 = this.get('f7');
+
     f7.params.swipePanel = panels;
     f7.initSwipePanels()
   }
