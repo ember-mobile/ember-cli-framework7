@@ -52,11 +52,29 @@ notation for explanations.
 this.get('f7').alert('Some alert');
 ```
 
-We will also use the [Emblem](http://emblemjs.com/) syntax to explain templates.
-
 Since the `f7` service extends an instance of the Framework7 class, it
 supports all JavaScript methods available for a Framework7 application.
 All this methods can be found in the Framework7 documentation.
+
+### Setting Framework7 Options
+Framework7 has an [extensive list](https://framework7.io/docs/init-app.html) of options that can be configured during initialization. By default, this addon 
+disables `pushState` and `cache` as they may have an adverse affect on how Ember functions. However, you can easily override
+these defaults or modify other options by extending the `f7` service. Here's an example:
+
+```js
+import Ember from 'ember';
+import F7Service from 'ember-cli-framework7/services/f7';
+
+export default F7Service.extend({
+  init() {
+    // disable f7 router
+    const options = this.get('options');
+    options.router = false;
+
+    this._super(...arguments);
+  }
+});
+```
 
 ## Features
 
