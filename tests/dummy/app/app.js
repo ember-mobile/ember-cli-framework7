@@ -11,6 +11,6 @@ var App = Ember.Application.extend({
   Resolver: Resolver
 });
 
-loadInitializers(App, config.modulePrefix);
+loadInitializers(App);
 
 export default App;

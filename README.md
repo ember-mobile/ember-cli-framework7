@@ -99,7 +99,7 @@ need to initialize the listeners within an initializer.
 Framework7Initializer =
   name: 'framework7'
   after: 'framework7-service'
-  initialize: (container, application) ->
+  initialize: (application) ->
     Ember.run.schedule 'afterRender', ->
       container.lookup('service:framework7').initSwipePanels 'left'
 
