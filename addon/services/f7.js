@@ -1,3 +1,4 @@
+/* globals Framework7 */
 import Ember from 'ember';
 
 const { Service, computed } = Ember;
