@@ -4,26 +4,36 @@
 module.exports = {
   name: 'ember-cli-framework7',
 
-  included: function(app) {
-    this.app = app;
-    this._super.included(app);
+  options: {
+    nodeAssets: {
+      'framework7': function() {
+          return {
+            srcDir: 'dist',
+            import: [
+              'js/framework7.js',
+              ...this.themeFiles
+            ]
+          };
+      }
+    }
+  },
 
-    //IMPORT CUSTOM EMBER-CLI-FRAMEWORK7 CSS
+  included: function(app) {
+
+    // import fix for Ember view height
     app.import('vendor/css/ember-cli-framework7.css');
 
-    var bowerDirectory = app.bowerDirectory;
-    
-    //MATERIAL DESIGN
-    //app.import(bowerDirectory + '/framework7/dist/css/framework7.material.css');
-    //app.import(bowerDirectory + '/framework7/dist/css/framework7.material.colors.css');
+    // default to iOS theme
+    let theme = 'ios';
 
-    //IOS DESIGN
-    //app.import(bowerDirectory + '/framework7/dist/css/framework7.ios.css');
-    //app.import(bowerDirectory + '/framework7/dist/css/framework7.ios.colors.css');
+    // if theme was configured in f7 options, use it
+    if (app.options && app.options['ember-cli-framework7'] && app.options['ember-cli-framework7'].theme) {
+      theme = app.options['ember-cli-framework7'].theme;
+    }
 
-    app.import(bowerDirectory + '/framework7/dist/js/framework7.min.js');
-    app.import(bowerDirectory + '/framework7/dist/js/framework7.min.js.map', {
-      destDir: 'assets'
-    });
+    // set theme files to import
+    this.themeFiles = [`css/framework7.${theme}.css`, `css/framework7.${theme}.colors.css`];
+
+    this._super.included.apply(this, arguments);
   }
 };
