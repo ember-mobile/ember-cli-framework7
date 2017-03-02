@@ -7,7 +7,7 @@ export default Ember.Mixin.create({
     if (action) {
       this.$().addClass('infinite-scroll');
       this.set('hasInfiniteScroll', true);
-      this.get('f7').attachInfiniteScroll(this.$());
+      this.get('f7.f7').attachInfiniteScroll(this.$());
       this.$().on('infinite', function() {
         if (_this.get('loading')) return;
         _this.$().find('.infinite-scroll-preloader').show();
@@ -24,7 +24,7 @@ export default Ember.Mixin.create({
   }.on('didInsertElement'),
 
   detachInfiniteScroll: function() {
-    this.get('f7').detachInfiniteScroll(this.$());
+    this.get('f7.f7').detachInfiniteScroll(this.$());
     this.$().find('.infinite-scroll-preloader').hide();
   }
 });
