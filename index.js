@@ -1,3 +1,4 @@
+/* eslint-disable no-var, object-shorthand, prefer-template */
 'use strict';
 
 var Funnel     = require('broccoli-funnel');
@@ -9,9 +10,10 @@ module.exports = {
   name: 'ember-cli-framework7',
 
   /**
+   * @public
    * @method included
    */
-  included: function (app) {
+  included: function(app) {
     this._super.included.apply(this, arguments);
 
     // https://github.com/ember-cli/ember-cli/issues/3718
@@ -31,6 +33,23 @@ module.exports = {
   },
 
   /**
+   * @public
+   * @method init
+   */
+  init: function(app) {
+    this._super.init && this._super.init.apply(this, arguments);
+
+    this.options = this.options || {};
+    this.options.babel = this.options.babel || {};
+    this.options.babel.optional = this.options.babel.optional || [];
+
+    if (this.options.babel.optional.indexOf('es7.decorators') === -1) {
+      this.options.babel.optional.push('es7.decorators');
+    }
+  },
+
+  /**
+   * @public
    * @method treeForVendor
    */
   treeForVendor: function(vendorTree) {
@@ -56,6 +75,7 @@ module.exports = {
   },
 
   /**
+   * @public
    * @method getConfig
    * @return {Object} Addon configuration
    */
