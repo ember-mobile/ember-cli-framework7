@@ -7,7 +7,7 @@ export default Ember.Component.extend({
     this.$('.center').css('opacity', '0');
     var _this = this;
     setTimeout(function() {
-      _this.get('f7').sizeNavbars();
+      _this.get('f7.f7').sizeNavbars();
       _this.$('.center').css('opacity', '1');
     }, 0);
   }

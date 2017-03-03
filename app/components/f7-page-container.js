@@ -37,7 +37,7 @@ export default Ember.Component.extend({
    */
   initSearchBar: function() {
     if (this.get('searchBar')) {
-      this.get('f7').initSearchbar(this.$());
+      this.get('f7.f7').initSearchbar(this.$());
     }
   }.observes('searchBar')
 });
