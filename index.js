@@ -27,9 +27,9 @@ module.exports = {
 
     // load Framework7 stylesheet files
     var config    = this.getConfig();
-    var themeBase = path.join(base, 'css', 'framework7', config.theme);
-    app.import(themeBase + '.colors.css', { prepend: true });
-    app.import(themeBase + '.css', { prepend: true });
+    var themeBase = path.join(base, 'css', 'framework7.' + config.theme);
+    app.import(themeBase + '.colors.css');
+    app.import(themeBase + '.css');
   },
 
   /**
@@ -81,9 +81,9 @@ module.exports = {
    */
   getConfig: function() {
     var projectConfig  = this.project.config(process.env.EMBER_ENV) || {};
-    var addonConfig    = projectConfig.urijs || {};
+    var addonConfig    = projectConfig.framework7 || {};
     var framework7Path = path.dirname(require.resolve('framework7'));
-    return defaults(projectConfig, {
+    return defaults(addonConfig, {
       framework7Path: path.join(framework7Path, '..'),
       theme:          'ios'
     });
