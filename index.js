@@ -30,6 +30,15 @@ module.exports = {
     var themeBase = path.join(base, 'css', 'framework7.' + config.theme);
     app.import(themeBase + '.colors.css');
     app.import(themeBase + '.css');
+
+    if (config.iconsPath) {
+      // load Framework7 icons
+      app.import(base + '/css/framework7-icons.css', { destDir: '/fonts' });
+      app.import(base + '/fonts/Framework7Icons-Regular.eot', { destDir: '/fonts' });
+      app.import(base + '/fonts/Framework7Icons-Regular.ttf', { destDir: '/fonts' });
+      app.import(base + '/fonts/Framework7Icons-Regular.woff', { destDir: '/fonts' });
+      app.import(base + '/fonts/Framework7Icons-Regular.woff2', { destDir: '/fonts' });
+    }
   },
 
   /**
@@ -71,6 +80,20 @@ module.exports = {
       ]
     }));
 
+    if (config.iconsPath) {
+      // Add framework7 icon path to the vendor tree
+      trees.push(new Funnel(config.iconsPath, {
+        destDir: 'framework7',
+        include: [
+          'css/framework7-icons.css',
+          'fonts/Framework7Icons-Regular.eot',
+          'fonts/Framework7Icons-Regular.ttf',
+          'fonts/Framework7Icons-Regular.woff',
+          'fonts/Framework7Icons-Regular.woff2'
+        ]
+      }));
+    }
+
     return mergeTrees(trees);
   },
 
@@ -83,8 +106,10 @@ module.exports = {
     var projectConfig  = this.project.config(process.env.EMBER_ENV) || {};
     var addonConfig    = projectConfig.framework7 || {};
     var framework7Path = path.dirname(require.resolve('framework7'));
+
     return defaults(addonConfig, {
       framework7Path: path.join(framework7Path, '..'),
+      iconsPath:      path.join(framework7Path, '..', '..', '..', 'framework7-icons'),
       theme:          'ios'
     });
   }

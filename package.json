@@ -22,6 +22,7 @@
     "broccoli-merge-trees": "^1.2.3",
     "ember-cli-babel": "^5.1.7",
     "framework7": "^1.5.3",
+    "framework7-icons": "^0.8.9",
     "lodash.defaults": "^4.2.0"
   },
   "devDependencies": {
