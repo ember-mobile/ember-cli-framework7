@@ -174,4 +174,14 @@ describe('Unit | Service | framework7', function() {
       expect(service._f7.showPreloader).to.be.calledOnce;
     });
   });
+
+  it('exposes navbar methods', function() {
+    let service = this.subject();
+    let methods = ['sizeNavbars', 'navbarInitCallback', 'navbarRemoveCallback',
+      'initNavbar', 'reinitNavbar', 'initNavbarWithCallback', 'hideNavbar',
+      'showNavbar', 'showNavbar', 'showToolbar'];
+    methods.forEach((name) => {
+      expect(service).to.respondTo(name);
+    });
+  });
 });

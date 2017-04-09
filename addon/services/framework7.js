@@ -43,6 +43,9 @@ export default Service.extend({
       ...this._options()
     });
 
+    // Expose all F7 methods throuh the service
+    this._mimic(this._f7);
+
     return this._super(...args);
   },
 
@@ -77,5 +80,17 @@ export default Service.extend({
     let result  = { ...options }; // Clone the object
     REJECT_KEYS.forEach((key) => delete result[key]);
     return result;
+  },
+
+  /**
+   * @private
+   * @method _mimic
+   */
+  _mimic(object) {
+    for (let key in object) {
+      if (object.hasOwnProperty(key) && this[key] === undefined && typeof object[key] === 'function') {
+        this[key] = object[key].bind(object);
+      }
+    }
   }
 });
