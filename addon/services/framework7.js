@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 const {
   assert,
+  computed,
   getOwner,
   isPresent,
   run,
@@ -40,7 +41,7 @@ export default Service.extend({
     this._f7 = new Framework7({
       cache:     false,
       pushState: false,
-      ...this._options()
+      ...this.get('options')
     });
 
     // Expose all F7 methods throuh the service
@@ -74,14 +75,14 @@ export default Service.extend({
    * @method _options
    * @return {Object}
    */
-  _options() {
+  options: computed(function() {
     let owner   = getOwner(this);
     let env     = owner.factoryFor('config:environment').class;
     let options = (env || {}).framework7 || {};
     let result  = { ...options }; // Clone the object
     REJECT_KEYS.forEach((key) => delete result[key]);
     return result;
-  },
+  }),
 
   /**
    * @private

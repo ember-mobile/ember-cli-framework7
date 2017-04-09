@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, it } from 'mocha';
 import { setupTest } from 'ember-mocha';
 
 const {
+  ComputedProperty,
   RSVP,
   run
 } = Ember;
@@ -125,6 +126,34 @@ describe('Unit | Service | framework7', function() {
     it('throws an error if swipePanel is not defined', function() {
       let service = this.subject();
       expect(service.initSwipePanels).to.throw(Error);
+    });
+  });
+
+  describe('options', function() {
+    it('is a property', function() {
+      let service = this.subject();
+      expect(service.options).to.be.instanceOf(ComputedProperty);
+    });
+
+    it('returns an object', function() {
+      let service = this.subject();
+      expect(service.get('options')).to.be.instanceOf(Object);
+    });
+
+    it('contains the config values', function() {
+      config.foo = 'bar';
+      let service = this.subject();
+      expect(service.get('options.foo')).to.eql('bar');
+    });
+
+    it('is not containing addon config values', function() {
+      config.framework7Path = 'foo';
+      config.iconsPath      = 'bar';
+      config.theme          = 'baz';
+      let service = this.subject();
+      expect(service.get('options.framework7Path')).to.be.undefined;
+      expect(service.get('options.iconsPath')).to.be.undefined;
+      expect(service.get('options.theme')).to.be.undefined;
     });
   });
 
