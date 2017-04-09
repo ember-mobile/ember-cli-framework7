@@ -75,7 +75,8 @@ export default Service.extend({
    * @return {Object}
    */
   _options() {
-    let env     = getOwner(this).lookup('config:environment');
+    let owner   = getOwner(this);
+    let env     = owner.factoryFor('config:environment').class;
     let options = (env || {}).framework7 || {};
     let result  = { ...options }; // Clone the object
     REJECT_KEYS.forEach((key) => delete result[key]);
