@@ -1,0 +1,14 @@
+{{#if _hasPullToRefresh}}
+  <div class="pull-to-refresh-layer">
+    {{f7-preloader}}
+    <div class="pull-to-refresh-arrow"></div>
+  </div>
+{{/if}}
+
+{{yield}}
+
+{{#if _hasInfiniteScroll}}
+  <div class="infinite-scroll-preloader">
+    {{f7-preloader}}
+  </div>
+{{/if}}

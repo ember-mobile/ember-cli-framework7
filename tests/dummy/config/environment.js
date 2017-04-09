@@ -24,6 +24,10 @@ module.exports = function(environment) {
 
     browserify: {
       tests: true
+    },
+
+    framework7: {
+      root: '#ember-testing-container'
     }
   };
 

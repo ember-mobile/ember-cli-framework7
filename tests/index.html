@@ -29,5 +29,24 @@
 
     {{content-for "body-footer"}}
     {{content-for "test-body-footer"}}
+
+
+    <style media="screen">
+      /* Reset styles in tests */
+      body {
+        background-color: white;
+        color: black;
+      }
+      #ember-testing-container {
+        right: -600px;
+      }
+      #ember-testing-container:hover {
+        right: 0px;
+      }
+      #mocha-stats .progress {
+        background-color: white;
+        height: auto;
+      }
+    </style>
   </body>
 </html>
