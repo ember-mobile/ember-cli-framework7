@@ -2,10 +2,18 @@ import Ember from 'ember';
 
 const {
   assert,
+  getOwner,
   isPresent,
   run,
   Service
 } = Ember;
+
+/**
+ * @private
+ * @property REJECT_KEYS
+ * @type {Array}
+ */
+const REJECT_KEYS = ['framework7Path', 'iconsPath', 'theme'];
 
 /**
  * @public
@@ -28,12 +36,14 @@ export default Service.extend({
    * @public
    * @method initialize
    */
-  initialize(options = {}) {
+  init(...args) {
     this._f7 = new Framework7({
       cache:     false,
       pushState: false,
-      ...options
+      ...this._options()
     });
+
+    return this._super(...args);
   },
 
   /**
@@ -54,5 +64,18 @@ export default Service.extend({
       return;
     }
     this._preloader = run.later(this._f7.showPreloader, options.delay || 0);
+  },
+
+  /**
+   * @private
+   * @method _options
+   * @return {Object}
+   */
+  _options() {
+    let env     = getOwner(this).lookup('config:environment');
+    let options = (env || {}).framework7 || {};
+    let result  = { ...options }; // Clone the object
+    REJECT_KEYS.forEach((key) => delete result[key]);
+    return result;
   }
 });

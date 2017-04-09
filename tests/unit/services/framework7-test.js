@@ -16,11 +16,12 @@ function timeout(ms) {
 describe('Unit | Service | framework7', function() {
   setupTest('service:framework7', { });
 
-  let sandbox, service;
+  let sandbox, config;
 
   beforeEach(function() {
     sandbox = sinon.sandbox.create();
-    service = this.subject();
+    config  = { root: '#ember-testing-container' };
+    this.container.registry.register('config:environment', { framework7: config }, { instantiate: false });
   });
 
   afterEach(function() {
@@ -28,45 +29,51 @@ describe('Unit | Service | framework7', function() {
   });
 
   it('exists', function() {
+    let service = this.subject();
     expect(service).to.be.ok;
   });
 
-  describe('#initialize', function() {
+  describe('#init', function() {
     it('exists', function() {
-      expect(service).to.respondTo('initialize');
+      let service = this.subject();
+      expect(service).to.respondTo('init');
     });
 
     it('creates an F7 instance', function() {
-      service.initialize();
+      let service = this.subject();
       expect(service._f7).to.be.instanceOf(Framework7);
     });
 
     it('passes the options when creating F7', function() {
       sandbox.spy(window, 'Framework7');
-      service.initialize({ foo: 'bar' });
+      config.foo = 'bar';
+      this.subject();
       expect(Framework7).to.be.calledWith({
         cache:     false,
         foo:       'bar',
-        pushState: false
+        pushState: false,
+        root:      '#ember-testing-container'
       });
     });
 
     it('can overwrite cache and pushState options', function() {
       sandbox.spy(window, 'Framework7');
-      service.initialize({
-        cache:     true,
-        pushState: true
-      });
+      config.cache     = true;
+      config.pushState = true;
+      this.subject();
       expect(Framework7).to.be.calledWith({
         cache:     true,
-        pushState: true
+        pushState: true,
+        root:      '#ember-testing-container'
       });
     });
   });
 
   describe('hidePreloader', function() {
+    let service;
+
     beforeEach(function() {
-      service.initialize();
+      service = this.subject();
     });
 
     it('exists', function() {
@@ -103,25 +110,29 @@ describe('Unit | Service | framework7', function() {
 
   describe('initSwipePanels', function() {
     it('exists', function() {
+      let service = this.subject();
       expect(service).to.respondTo('initSwipePanels');
     });
 
     it('initializes the swipe panels through F7', function() {
-      service.initialize({ swipePanel: 'left' });
+      config.swipePanel = 'left';
+      let service = this.subject();
       sandbox.spy(service._f7, 'initSwipePanels');
       service.initSwipePanels();
       expect(service._f7.initSwipePanels).to.be.called;
     });
 
     it('throws an error if swipePanel is not defined', function() {
-      service.initialize();
+      let service = this.subject();
       expect(service.initSwipePanels).to.throw(Error);
     });
   });
 
   describe('showPreloader', function() {
+    let service;
+
     beforeEach(function() {
-      service.initialize();
+      service = this.subject();
     });
 
     it('exists', function() {
