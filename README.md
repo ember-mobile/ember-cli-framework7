@@ -52,6 +52,36 @@ in the `environment.js` file:
   };
 ```
 
+## Components
+
+The components in the addon don't aim to replace the markup required to make
+Framework7 work, instead, they just replace some wrappers if for example
+initialization is required as soon as the content has been placed in the DOM.
+
+### f7-page-content
+
+This component adds the page-content wrapper and implements some of the
+functionality it provides. This includes **pull to refresh** and
+**infinite scroll**. To activate these features, the `onPullToRefresh` and/or
+`onInfiniteScroll` action must be set as a closure action. When the given action
+returns a `Promise`, the preloader is shown until the promise has finished.
+
+```hbs
+{{#f7-page-content onPullToRefresh=(action 'reload')}}
+  ...
+{{/f7-page-content}}
+```
+
+```js
+actions: {
+  reload() {
+    return new RSVP.Promise((resolve, reject) => {
+      // ...
+    });
+  }
+}
+```
+
 ## Running
 
 * `ember serve`
