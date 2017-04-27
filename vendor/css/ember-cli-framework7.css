@@ -1,4 +1,4 @@
-body > .ember-view {
+.ember-application > .ember-view {
   height: 100%;
 }
 
